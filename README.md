@@ -10,9 +10,9 @@ Implementation of the deadlock avoidance algorithm for resource allocation.
 ### 2. **CPU Scheduling**
 Various CPU scheduling algorithms including:
 - First Come First Serve (FCFS)
-- Shortest Job First (SJF)
+- Shortest Job First (SJF) - Preemptive & Non-Preemptive
 - Round Robin (RR)
-- Priority Scheduling
+- Priority Scheduling - Preemptive & Non-Preemptive
 
 ### 3. **Disk Scheduling Algorithms**
 Implementations of disk scheduling techniques such as:
@@ -52,7 +52,6 @@ Classical synchronization problems:
 ## 🛠️ Environment
 - **OS**: Ubuntu
 - **Language**: C/C++, Shell Script
-- **Semester**: 5th
 
 ## 📄 Additional Files
 - `OS_Lab_Manual_ICT3142.pdf` - Lab manual reference
@@ -69,9 +68,5 @@ For shell scripts:
 ```bash
 bash script_name.sh
 ```
-
-## 👤 Author
-**sk8infinity18**
-
 ---
 *Repository created as part of Operating Systems Laboratory coursework*
