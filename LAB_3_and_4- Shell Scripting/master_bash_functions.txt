@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# -----------------------------
+# Array Utility Functions
+# -----------------------------
+
+# Print all elements
+print_array() {
+    local arr=("${!1}")
+    echo "${arr[@]}"
+}
+
+# Length of array
+length_array() {
+    local arr=("${!1}")
+    echo "${#arr[@]}"
+}
+
+# Sum of array
+sum_array() {
+    local arr=("${!1}")
+    local sum=0
+    for val in "${arr[@]}"; do
+        (( sum += val ))
+    done
+    echo "$sum"
+}
+
+# Maximum element
+max_array() {
+    local arr=("${!1}")
+    local max=${arr[0]}
+    for val in "${arr[@]}"; do
+        (( val > max )) && max=$val
+    done
+    echo "$max"
+}
+
+# Minimum element
+min_array() {
+    local arr=("${!1}")
+    local min=${arr[0]}
+    for val in "${arr[@]}"; do
+        (( val < min )) && min=$val
+    done
+    echo "$min"
+}
+
+# Search element
+search_array() {
+    local arr=("${!1}")
+    local search=$2
+    for val in "${arr[@]}"; do
+        if [[ $val -eq $search ]]; then
+            echo "Found"
+            return
+        fi
+    done
+    echo "Not Found"
+}
+
+# Sort ascending
+sort_array() {
+    local arr=("${!1}")
+    local sorted=($(for val in "${arr[@]}"; do echo $val; done | sort -n))
+    echo "${sorted[@]}"
+}
+
+# Sort descending
+sort_array_desc() {
+    local arr=("${!1}")
+    local sorted=($(for val in "${arr[@]}"; do echo $val; done | sort -nr))
+    echo "${sorted[@]}"
+}
+
+# Reverse array
+reverse_array() {
+    local arr=("${!1}")
+    local reversed=()
+    for ((i=${#arr[@]}-1; i>=0; i--)); do
+        reversed+=("${arr[i]}")
+    done
+    echo "${reversed[@]}"
+}
+
+# Even numbers
+even_array() {
+    local arr=("${!1}")
+    for val in "${arr[@]}"; do
+        (( val % 2 == 0 )) && echo "$val"
+    done
+}
+
+# Odd numbers
+odd_array() {
+    local arr=("${!1}")
+    for val in "${arr[@]}"; do
+        (( val % 2 != 0 )) && echo "$val"
+    done
+}
+
+# -----------------------------
+# Example Usage
+# -----------------------------
+
+arr=(10 2 34 3 1 67)
+
+echo "Array: $(print_array arr[@])"
+echo "Length: $(length_array arr[@])"
+echo "Sum: $(sum_array arr[@])"
+echo "Max: $(max_array arr[@])"
+echo "Min: $(min_array arr[@])"
+echo "Search 34: $(search_array arr[@] 34)"
+echo "Sorted (asc): $(sort_array arr[@])"
+echo "Sorted (desc): $(sort_array_desc arr[@])"
+echo "Reversed: $(reverse_array arr[@])"
+
+echo "Even numbers:"
+even_array arr[@]
+
+echo "Odd numbers:"
+odd_array arr[@]

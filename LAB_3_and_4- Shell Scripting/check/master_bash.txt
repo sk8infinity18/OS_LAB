@@ -1,0 +1,104 @@
+🔹 1. Script Basics
+#!/bin/bash     # Shebang - tells system to use bash
+# This is a comment
+echo "Hello World"
+
+
+Run a script:
+
+bash script.sh
+./script.sh
+
+🔹 2. Variables
+name="Abhishek"
+age=22
+echo "Name: $name, Age: $age"
+
+
+Read from user:
+
+read -p "Enter your name: " name
+
+🔹 3. Command-line Arguments
+echo "First arg: $1"
+echo "Second arg: $2"
+echo "All args: $@"
+echo "Arg count: $#"
+
+🔹 4. Arithmetic
+a=10
+b=5
+echo $((a+b))   # Addition
+echo $((a*b))   # Multiplication
+
+🔹 5. If Conditions
+if [ $a -gt $b ]; then
+    echo "a is greater"
+elif [ $a -eq $b ]; then
+    echo "equal"
+else
+    echo "b is greater"
+fi
+
+🔹 6. File Tests
+[ -f file.txt ] && echo "File exists"
+[ -d folder ] && echo "Directory exists"
+[ -r file.txt ] && echo "Readable"
+[ -w file.txt ] && echo "Writable"
+
+🔹 7. Loops
+For loop:
+for i in 1 2 3 4; do
+  echo "Number $i"
+done
+
+While loop:
+count=1
+while [ $count -le 5 ]; do
+  echo "Count: $count"
+  ((count++))
+done
+
+🔹 8. Case Statement
+read -p "Enter choice: " choice
+case $choice in
+  1) echo "Option 1" ;;
+  2) echo "Option 2" ;;
+  *) echo "Invalid" ;;
+esac
+
+🔹 9. Functions
+greet() {
+  echo "Hello, $1"
+}
+greet "Abhishek"
+
+🔹 10. Input/Output Redirection
+ls > files.txt    # Write output to file
+cat < files.txt   # Read input from file
+ls >> files.txt   # Append to file
+
+🔹 11. Pipes
+cat file.txt | grep "hello" | sort | uniq
+
+🔹 12. String Operations
+str="Hello World"
+echo ${#str}         # Length
+echo ${str:0:5}      # Substring (Hello)
+echo ${str/World/Bash} # Replace
+
+🔹 13. Arrays
+arr=(apple banana cherry)
+echo ${arr[0]}     # apple
+echo ${arr[@]}     # all elements
+echo ${#arr[@]}    # length
+
+🔹 14. Useful Commands in Scripts
+wc -l file.txt             # Count lines
+grep "word" file.txt       # Search word
+sed 's/old/new/g' file.txt # Replace
+awk '{print $1}' file.txt  # Print first column
+
+🔹 15. Exit Status
+command
+echo $?   # 0 = success, nonzero = failure

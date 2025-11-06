@@ -1,0 +1,7 @@
+total 4
+-rwxrwxrwx 1 infinity18 infinity18   99 Aug 16 10:51 Main.java
+-rwxrwxrwx 1 infinity18 infinity18  389 Aug 16 11:12 file.txt
+-rwxrwxrwx 1 infinity18 infinity18  365 Aug 16 13:28 grep_test.txt
+-rwxrwxrwx 1 infinity18 infinity18 1049 Aug 16 11:16 sample.txt
+-rwxrwxrwx 1 infinity18 infinity18  153 Aug 16 16:01 sort_test.txt
+-rwxrwxrwx 1 infinity18 infinity18    0 Aug 16  2025 temp.txt

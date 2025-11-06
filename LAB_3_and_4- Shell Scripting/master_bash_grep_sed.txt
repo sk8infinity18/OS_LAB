@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# -----------------------------
+# Setup (create sample file)
+# -----------------------------
+echo -e "apple\nbanana\ncherry\nbanana\napple\nmango" > fruits.txt
+
+# -----------------------------
+# 1. For Loop + File Iteration
+# -----------------------------
+echo "For loop over files in current directory:"
+for file in *; do
+    echo "File: $file"
+done
+
+# -----------------------------
+# 2. While Loop + Read File Line by Line
+# -----------------------------
+echo "Reading fruits.txt line by line:"
+while read -r line; do
+    echo "Fruit: $line"
+done < fruits.txt
+
+# -----------------------------
+# 3. Grep inside a loop
+# -----------------------------
+echo "Searching for 'apple' in fruits.txt using grep:"
+grep "apple" fruits.txt | while read -r match; do
+    echo "Found: $match"
+done
+
+# -----------------------------
+# 4. Using sed inside loop (replace text)
+# -----------------------------
+echo "Replacing 'banana' with 'orange':"
+while read -r line; do
+    echo "$line" | sed 's/banana/orange/g'
+done < fruits.txt
+
+# -----------------------------
+# 5. awk inside loop (extract column)
+# -----------------------------
+echo -e "1 Alice\n2 Bob\n3 Charlie" > people.txt
+echo "Using awk to extract names:"
+awk '{print "Name:", $2}' people.txt
+
+# -----------------------------
+# 6. Find + Loop (search multiple files)
+# -----------------------------
+echo "Find all .txt files and print contents:"
+for file in $(find . -type f -name "*.txt"); do
+    echo "--- $file ---"
+    cat "$file"
+done
+
+# -----------------------------
+# 7. Break / Continue with grep
+# -----------------------------
+echo "Loop with break/continue using grep:"
+for word in $(cat fruits.txt); do
+    if [[ "$word" == "banana" ]]; then
+        echo "Skipping banana"
+        continue
+    fi
+    if [[ "$word" == "mango" ]]; then
+        echo "Breaking at mango"
+        break
+    fi
+    echo "Word: $word"
+done

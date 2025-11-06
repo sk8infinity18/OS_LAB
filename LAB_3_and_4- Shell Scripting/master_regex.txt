@@ -1,0 +1,63 @@
+📌 Regex  (for grep, sed, awk)
+🔹 Basics
+Regex	Meaning	Example
+.	Any single character	c.t → matches cat, cut
+^	Start of line	^Hello → matches Hello at start
+$	End of line	end$ → matches The end
+\	Escape special char	\. → matches literal .
+🔹 Character Classes
+Regex	Meaning	Example
+[abc]	Any one of a, b, or c	gr[ae]y → gray, grey
+[^abc]	Not a, b, or c	[^0-9] → non-digits
+[a-z]	Range of characters	[A-Z] → capital letters
+\d	Digit (0–9)	\d\d → 2 digits
+\D	Non-digit	\D+
+\w	Word char (a-zA-Z0-9_)	\w+ → whole word
+\W	Non-word char	\W+
+\s	Whitespace (space, tab)	\s+ → multiple spaces
+\S	Non-whitespace	\S+
+🔹 Quantifiers
+Regex	Meaning	Example
+*	0 or more	lo*l → ll, lol, loool
++	1 or more	lo+l → lol, loool
+?	0 or 1	colou?r → color, colour
+{n}	Exactly n times	a{3} → aaa
+{n,}	n or more	a{2,} → aa, aaa, …
+{n,m}	Between n and m	a{2,4} → aa, aaa, aaaa
+🔹 Groups & Alternation
+Regex	Meaning	Example
+(abc)	Group	(ab)+ → ababab
+`a	b`	OR
+(?:abc)	Non-capturing group	Useful in complex patterns
+🔹 Anchors & Boundaries
+Regex	Meaning	Example
+^	Start of line	^Hello
+$	End of line	world$
+\b	Word boundary	\bcat\b → matches cat, not scatter
+\B	Not a word boundary	\Bcat
+🔹 Special Cases
+Regex	Meaning	Example
+.*	Any string (0+ chars)	a.*b → axb, axxxb
+.+	At least one char	a.+b
+^$	Empty line	grep "^$" file
+\n	Newline (in sed / awk)	Multi-line matching
+
+
+🔹 Practical Examples
+grep -E "^[0-9]{3}-[0-9]{2}-[0-9]{4}$" file   # US SSN format
+grep -E "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" file   # Email
+sed -n '/^[0-9]\{10\}$/p' file               # 10-digit phone numbers
+grep -E "\b(cat|dog)\b" file                 # Match "cat" or "dog" as whole words
+
+
+✅ Quick Remember:
+
+^…$ → match whole line
+
+\bword\b → match whole word
+
+.* → anything
+
+a|b → OR
+
+[…] → character set
