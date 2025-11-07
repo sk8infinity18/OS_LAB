@@ -1,4 +1,4 @@
-# Operating Systems Lab - 5th Semester
+# Operating Systems Lab 
 
 This repository contains implementations and practice code for Operating Systems lab exercises completed during the 5th semester, performed on Ubuntu.
 
@@ -69,4 +69,5 @@ For shell scripts:
 bash script_name.sh
 ```
 ---
+
 *Repository created as part of Operating Systems Laboratory coursework*
